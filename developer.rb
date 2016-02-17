@@ -1,17 +1,16 @@
 require 'byebug'
 class Developer 
-
  MAX_TASKS = 10
 
 def initialize (name)
-  @name  = name
+  @name     = name
   @tasks_of = []
 end  
 
 def add_task (task)
   if can_add_task? 
     @tasks_of << task
-    puts"@name: добавлена задача #{task}. 
+    puts"#{@name}: добавлена задача #{task}. 
         Всего в списке задач:#{@tasks_of.size}"
   else 
     puts "Слишком много работы!"
@@ -23,12 +22,12 @@ def tasks
 end 
 
 def work!
-  if can_work? 
-    puts "@name: выполнена задача #{@tasks_of.slice!(0)}.
+  if @tasks_of.count == 0
+    raise ArgumentError, "Нечего делать"
+  end  
+  can_work? 
+    puts "#{@name}: выполнена задача #{@tasks_of.slice!(0)}.
           Осталось задач: #{@tasks_of.count}"
-  else 
-    puts "Нечего делать"
-  end 
 end 
 
 def status
@@ -51,11 +50,11 @@ end
 end  
 # 
 
-# dev = Developer.new('Sasha')
+dev = Developer.new('Sasha')
 
 # dev.add_task('Написать сайт1')
 # dev.add_task('Написать сайт2')
 # dev.add_task('Написать сайт3')
 # dev.add_task('Написать сайт4')
-# byebug
-# dev.status
+byebug
+dev.status

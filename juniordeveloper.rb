@@ -1,16 +1,13 @@
 require './developer.rb'
 require 'byebug'
 class JuniorDeveloper < Developer
-
 MAX_TASKS = 5
 
-def initialize(name)
-  @name = name
-  @tasks_of = []
-end
+super
 
 def work!
-  puts "@name: пытаюсь делать задачу #{@tasks_of[0]}.Осталось задач:#{length - 1}"
+  puts "#{@name}: пытаюсь делать задачу #{@tasks_of[0]}.
+       Осталось задач:#{@tasks_of.count}"
 end
 
 def add_task (task)
