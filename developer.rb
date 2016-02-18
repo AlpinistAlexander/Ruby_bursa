@@ -18,9 +18,7 @@ def add_task (task)
 end
 
 def tasks
-   tasks = []
-   @tasks_of.each_with_index{|i,x|  tasks << "#{(x + 1)}.#{i}"}
-   tasks.each{|i| i} 
+    @tasks_of.map.with_index{|i, x| "#{x + 1}. #{i}\n"}.join("")
 end 
 
 def work!
@@ -47,17 +45,17 @@ def can_add_task?
 end
 
 def can_work?
-  @tasks_of.zero?
+  @tasks_of.size != 0
 end 
 end  
 # 
 
-dev = Developer.new('Sasha')
+# dev = Developer.new('Sasha')
 
-dev.add_task('Написать сайт1')
-dev.add_task('Написать сайт2')
-dev.add_task('Написать сайт3')
-dev.add_task('Написать сайт4')
-dev.tasks
-byebug
-dev.status
+# dev.add_task('Написать сайт1')
+# dev.add_task('Написать сайт2')
+# dev.add_task('Написать сайт3')
+# dev.add_task('Написать сайт4')
+# dev.tasks
+# byebug
+# dev.status
