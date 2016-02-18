@@ -18,7 +18,7 @@ def add_task (task)
 end
 
 def tasks
-   tasks = []
+   tasks = ""
    @tasks_of.each_with_index{|i,x|  tasks << "#{(x + 1)}.#{i}"}
    tasks.each{|i| i} 
 end 
@@ -47,7 +47,7 @@ def can_add_task?
 end
 
 def can_work?
-  @tasks_of.size != 0
+  @tasks_of.zero?
 end 
 end  
 # 
