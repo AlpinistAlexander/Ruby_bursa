@@ -25,7 +25,7 @@ end
 
 def work!
   if @tasks_of.count == 0
-    raise ArgumentError, "Нечего делать"
+    raise "Нечего делать"
   end  
   can_work? 
     puts "#{@name}: выполнена задача #{@tasks_of.slice!(0)}.
