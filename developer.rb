@@ -18,7 +18,9 @@ def add_task (task)
 end
 
 def tasks
-   @tasks_of.each_with_index {|i,x| puts "#{x + 1 }. \"#{i}\""}  
+   tasks = []
+   @tasks_of.each_with_index{|i,x|  tasks << "#{(x + 1)}.#{i}"}
+   tasks.each{|i| i} 
 end 
 
 def work!
@@ -52,9 +54,10 @@ end
 
 dev = Developer.new('Sasha')
 
-# dev.add_task('Написать сайт1')
-# dev.add_task('Написать сайт2')
-# dev.add_task('Написать сайт3')
-# dev.add_task('Написать сайт4')
+dev.add_task('Написать сайт1')
+dev.add_task('Написать сайт2')
+dev.add_task('Написать сайт3')
+dev.add_task('Написать сайт4')
+dev.tasks
 byebug
 dev.status
