@@ -22,22 +22,23 @@ def tasks
 end 
 
 def work!
-  if @tasks_of.count == 0
-    raise "Нечего делать"
-  end  
-  can_work? 
-    puts "#{@name}: выполнена задача #{@tasks_of.slice!(0)}.
-          Осталось задач: #{@tasks_of.count}"
+  unless can_work?
+    raise "Нечего делать"  
+  else
+    puts %Q{#{@name}: выполнена задача "#{@tasks_of.slice!(0)}.
+          Осталось задач: #{@tasks_of.count}}
+  end        
 end 
 
 def status
-  if @tasks_of.empty?
+  case 
+  when @tasks_of.empty?
     "Свободен"
-  elsif @tasks_of.size  < self.class::MAX_TASKS
+  when can_add_task? 
     "Работаю"
-  elsif @tasks_of.size >= self.class::MAX_TASKS
-    "Занят"  
-  end  
+  when @tasks_of.size >= self.class::MAX_TASKS
+     "Занят"   
+  end
 end 
 
 def can_add_task?
@@ -45,7 +46,9 @@ def can_add_task?
 end
 
 def can_work?
-  @tasks_of.size != 0
+  unless @tasks_of.empty?
+    return true
+  end  
 end 
 end  
 # 

@@ -3,11 +3,9 @@ require 'byebug'
 class JuniorDeveloper < Developer
 MAX_TASKS = 5
 
-super
-
 def work!
-  puts "#{@name}: пытаюсь делать задачу #{@tasks_of[0]}.
-       Осталось задач:#{@tasks_of.count}"
+  puts %Q{#{@name}: пытаюсь делать задачу "#{@tasks_of[0]}".
+       Осталось задач:#{@tasks_of.count}}
 end
 
 def add_task (task)
@@ -19,6 +17,10 @@ def add_task (task)
 end  
 end 
 
-asa = JuniorDeveloper.new('Vasa') 
-byebug
-asa.add_task('Polit kaktys')
+# asa = JuniorDeveloper.new('Vasa') 
+# asa.add_task('Polit kaktys')
+# asa.add_task('Polit kaktys')
+# asa.add_task('Polit kaktys')
+# asa.add_task('Polit kaktys')
+# byebug
+# asa.add_task('Polit kaktys')
