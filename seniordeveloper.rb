@@ -1,6 +1,15 @@
 require './developer.rb'
 require 'byebug'
 class SeniorDeveloper < Developer
+attr_accessor :name,
+              :type,
+              :tasks_of
+  def initialize(name)
+    super
+    @type       = :senior
+    @class_team = :seniors
+  end
+
 MAX_TASKS = 15
 
 def work!
@@ -15,11 +24,3 @@ def work!
 end      
 end 
 
-# asa = SeniorDeveloper.new('Vova') 
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# byebug
-# asa.add_task('Polit kaktys') 

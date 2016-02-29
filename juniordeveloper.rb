@@ -1,7 +1,18 @@
 require './developer.rb'
 require 'byebug'
 class JuniorDeveloper < Developer
+attr_reader :name,
+            :type,
+            :tasks_of
+
 MAX_TASKS = 5
+
+  def initialize(name)
+    super
+    @type       = :junior
+    @class_team = :juniors
+  end
+  
 
 def work!
   puts %Q{#{@name}: пытаюсь делать задачу "#{@tasks_of[0]}".
@@ -17,10 +28,3 @@ def add_task (task)
 end  
 end 
 
-# asa = JuniorDeveloper.new('Vasa') 
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# asa.add_task('Polit kaktys')
-# byebug
-# asa.add_task('Polit kaktys')

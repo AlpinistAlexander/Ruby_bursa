@@ -1,11 +1,18 @@
 require 'byebug'
 class Developer 
+attr_accessor :name,
+              :type,
+              :tasks_of
+              
  MAX_TASKS = 10
 
 def initialize (name)
-  @name     = name
-  @tasks_of = []
-end  
+  @name       = name
+  @tasks_of   = []
+  @type       = :developer
+  @class_team = :developers
+end
+
 
 def add_task (task)
   if can_add_task? 
@@ -51,14 +58,7 @@ def can_work?
   end  
 end 
 end  
-# 
 
-# dev = Developer.new('Sasha')
-
-# dev.add_task('Написать сайт1')
-# dev.add_task('Написать сайт2')
-# dev.add_task('Написать сайт3')
-# dev.add_task('Написать сайт4')
-# dev.tasks
+# d = Developer.new('Vasa')
 # byebug
-# dev.status
+# dfgdv
