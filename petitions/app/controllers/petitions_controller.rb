@@ -1,28 +1,35 @@
-class PetitionsController < ApplicationController
+lass PetitionsController < ApplicationController
+
   def index
-    @petitions = Petition.all
-  end  
-   
+    if current_user.nil?
+      @petitions = Petition.last(10)
+    else
+      @petitions = Petition.all
+    end
+  end
+
   def show
-    @petition = Petition.find(params[:id])
-  end  
-  
-  def new
-    @petition = Petition.new
+    @petitions = Petition.find(params[:id])
+  end
+
+  def update
+    petition = Petition.find(params[:id])
+    petition.update(params)
+    redirect_to petition_path(article)
   end
 
   def create
-    @petition = Petition.new(petition_params)
+    petition = Petition.create(petition_params.merge({user_id: current_user.id}))
+    redirect_to petition_path(petition)
+  end
 
-    if @petition.save
-      redirect_to @petition
-    else
-      render 'new'
-    end    
-  end 
+  def new
+    @petitions = Petition.new
+  end
 
-private
+  private
+
   def petition_params
-    params.require(:petition).permit(:title, :text)   
-  end  
+    params.require(:petition).permit(:title, :text)
+  end
 end
