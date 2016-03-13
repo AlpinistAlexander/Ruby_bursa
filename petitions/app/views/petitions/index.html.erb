@@ -1,17 +1,22 @@
-<h1>Все петиции</h1>
-<%= link_to 'New article' %>
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
- 
-  <% @petitions.each do |petition| %>
+<h2><%= params[:my] ? 'Мои' : 'Все' %> петиции</h2>
+
+<% if params[:my] %>
+  <%= render "my" %>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Петиция</th>
+        <th>Автор</th>
+        <th>Дата создания</th>
+      </tr>
+    </thead>
+    <% @petitions.each_with_index do |petition, index| %>
     <tr>
-      <td><%= petition.title %></td>
-      <td><%= petition.text %></td>
-      <td><%= link_to 'Show', petition_path(petition) %></td>
+      <td><%= link_to petition.title, "petitions/#{petition.id}" %></td>
+      <td><%= petition.user.first_name + " " + petition.user.last_name %></td>
+      <td><%= petition.created_at.strftime("%d/%m/%Y %H:%M") %></td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
+<% end %>
