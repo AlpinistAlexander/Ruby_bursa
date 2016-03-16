@@ -1,0 +1,17 @@
+<h1>Все петиции</h1>
+<%= link_to 'New article' %>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @petitions.each do |petition| %>
+    <tr>
+      <td><%= petition.title %></td>
+      <td><%= petition.text %></td>
+      <td><%= link_to 'Show', petition_path(petition) %></td>
+    </tr>
+  <% end %>
+</table>
